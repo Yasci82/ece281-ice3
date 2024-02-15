@@ -91,21 +91,21 @@ begin
 	begin
 	
 	    w_sw <= o"0"; wait for 10 ns;
-		    assert w_led = "000" report "bad o0" severity error;
+		    assert w_led = "00" report "bad o0" severity error;
         w_sw <= o"1"; wait for 10 ns;
-            assert w_led = "001" report "bad o1" severity error;
+            assert w_led = "01" report "bad o1" severity error;
         w_sw <= o"2"; wait for 10 ns;
-            assert w_led = "010" report "bad o1" severity error;
+            assert w_led = "01" report "bad o1" severity error;
         w_sw <= o"3"; wait for 10 ns;
-            assert w_led = "011" report "bad o1" severity error;
+            assert w_led = "10" report "bad o1" severity error;
         w_sw <= o"4"; wait for 10 ns;
-            assert w_led = "100" report "bad o1" severity error;
+            assert w_led = "01" report "bad o1" severity error;
         w_sw <= o"5"; wait for 10 ns;
-            assert w_led = "101" report "bad o1" severity error;
+            assert w_led = "10" report "bad o1" severity error;
         w_sw <= o"6"; wait for 10 ns;
-            assert w_led = "110" report "bad o1" severity error;
+            assert w_led = "10" report "bad o1" severity error;
         w_sw <= o"7"; wait for 10 ns;
-            assert w_led = "111" report "bad o1" severity error;
+            assert w_led = "11" report "bad o1" severity error;
 	    --You must fill in the remaining test cases.	
 	
 		wait; -- wait forever
