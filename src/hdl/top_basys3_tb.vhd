@@ -60,13 +60,21 @@ architecture test_bench of top_basys3_tb is
   component top_basys3 is
       port(
           -- TODO
+          -- Switches
+          sw  :   in  std_logic_vector(2 downto 0);
+          
+                  -- LEDs
+          led :   out std_logic_vector(1 downto 0)
       );
   end component;
   
  
 	-- declare signals needed to stimulate the UUT inputs
 	   -- TODO
+	   signal w_sw : std_logic_vector (2 downto 0):= "000";
+	   signal w_led : std_logic_vector (1 downto 0):= "00";
 	-- finish declaring needed signals
+	
 begin
 	-- PORT MAPS ----------------------------------------
 	-- You must create the port map for your top_basys3.
@@ -83,9 +91,21 @@ begin
 	begin
 	
 	    w_sw <= o"0"; wait for 10 ns;
-		assert w_led = "00" report "bad o0" severity failure;
-            w_sw <= o"1"; wait for 10 ns;
-            	assert w_led = "01" report "bad o1" severity failure;
+		    assert w_led = "000" report "bad o0" severity error;
+        w_sw <= o"1"; wait for 10 ns;
+            assert w_led = "001" report "bad o1" severity error;
+        w_sw <= o"2"; wait for 10 ns;
+            assert w_led = "010" report "bad o1" severity error;
+        w_sw <= o"3"; wait for 10 ns;
+            assert w_led = "011" report "bad o1" severity error;
+        w_sw <= o"4"; wait for 10 ns;
+            assert w_led = "100" report "bad o1" severity error;
+        w_sw <= o"5"; wait for 10 ns;
+            assert w_led = "101" report "bad o1" severity error;
+        w_sw <= o"6"; wait for 10 ns;
+            assert w_led = "110" report "bad o1" severity error;
+        w_sw <= o"7"; wait for 10 ns;
+            assert w_led = "111" report "bad o1" severity error;
 	    --You must fill in the remaining test cases.	
 	
 		wait; -- wait forever
